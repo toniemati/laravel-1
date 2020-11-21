@@ -22,7 +22,35 @@ Route::group([
     'roles' => ['Admin', 'Moderator']
 
 ], function() {
-    Route::resource('pages', 'App\Http\Controllers\PagesController');
+    Route::get('pages', [
+        'uses' => 'App\Http\Controllers\PagesController@index',
+        'as' => 'pages.index'
+    ]);
+
+    Route::get('pages/create', [
+        'uses' => 'App\Http\Controllers\PagesController@create',
+        'as' => 'pages.create'
+    ]);
+
+    Route::post('pages/store', [
+        'uses' => 'App\Http\Controllers\PagesController@store',
+        'as' => 'pages.store'
+    ]);
+
+    Route::get('pages/edit/{page}', [
+        'uses' => 'App\Http\Controllers\PagesController@edit',
+        'as' => 'pages.edit'
+    ]);
+
+    Route::put('pages/{page}', [
+        'uses' => 'App\Http\Controllers\PagesController@update',
+        'as' => 'pages.update'
+    ]);
+
+    Route::delete('pages/{page}', [
+        'uses' => 'App\Http\Controllers\PagesController@destroy',
+        'as' => 'pages.delete'
+    ]);
 
 });
 
